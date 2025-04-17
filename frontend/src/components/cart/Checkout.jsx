@@ -243,7 +243,7 @@ const Checkout = () => {
         <h3 className='text-lg mb-4'>
             Order Summary </h3>
         <div className='border-t rounded py-4 mb-4'>
-            {cartItems.map((product) => ( 
+            {cart.products.map((product) => ( 
                 <div key={product._id} className='flex justify-between items-start py-2 border-b'>
                     <div className='flex items-start'>
                         <img src={product.image} alt={product.name} className='w-30 h-24 object-contain mr-4' />
