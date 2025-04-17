@@ -1,6 +1,5 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { CartContext } from '../../context/CartContext'
 import PayPalButton from './PayPalButton'
 import { useDispatch, useSelector } from 'react-redux'
 import { createCheckout } from '../../redux/slices/checkoutSlice'
@@ -13,7 +12,7 @@ const Checkout = () => {
   const { cart, loading, error} = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
   const [checkoutId, setCheckoutId] = useState(null);
-   const [shippingAddress, setShippingAddress] = useState({
+  const [shippingAddress, setShippingAddress] = useState({
     email: '',
     firstName: '',
     lastName: '',
@@ -94,8 +93,7 @@ const Checkout = () => {
     return <div>No items in the cart.</div>; 
   }
 
-  const { cartItems } = useContext(CartContext);
-  const totalPrice = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+  const totalPrice = cart.products.reduce((total, item) => total + (item.price * item.quantity), 0);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -244,7 +242,7 @@ const Checkout = () => {
             Order Summary </h3>
         <div className='border-t rounded py-4 mb-4'>
             {cart.products.map((product) => ( 
-                <div key={product._id} className='flex justify-between items-start py-2 border-b'>
+                <div key={product._id + '-' + product.quantity} className='flex justify-between items-start py-2 border-b'>
                     <div className='flex items-start'>
                         <img src={product.image} alt={product.name} className='w-30 h-24 object-contain mr-4' />
                         <div>
