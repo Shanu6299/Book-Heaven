@@ -94,41 +94,81 @@ store: {
 - npm or yarn package manager
 
 ### Backend Setup
-1. Navigate to backend directory:
+1. Clone the repository and navigate to backend directory:
    ```bash
-   cd backend
+   git clone <repository-url>
+   cd book-mern/backend
    ```
+
 2. Install dependencies:
    ```bash
-   npm install
+   npm install express mongoose dotenv bcryptjs jsonwebtoken cors
+   npm install nodemon --save-dev
    ```
-3. Create .env file with:
-   ```
-   MONGODB_URI=your_mongodb_uri
-   JWT_SECRET=your_jwt_secret
-   PORT=5000
-   ```
-4. Start the server:
+
+3. Create .env file:
    ```bash
+   echo "MONGODB_URI=your_mongodb_uri
+JWT_SECRET=your_jwt_secret
+PORT=5000" > .env
+   ```
+
+4. Seed the database (optional):
+   ```bash
+   npm run seed
+   ```
+
+5. Start the development server:
+   ```bash
+   # Development mode with nodemon
    npm run dev
+
+   # Production mode
+   npm start
    ```
 
 ### Frontend Setup
-1. Navigate to frontend directory:
+1. Open a new terminal and navigate to frontend directory:
    ```bash
-   cd frontend
+   cd ../frontend
    ```
+
 2. Install dependencies:
    ```bash
-   npm install
+   # Core dependencies
+   npm install react react-dom @reduxjs/toolkit react-redux axios
+   
+   # UI and styling
+   npm install @mui/material @emotion/react @emotion/styled
+   npm install tailwindcss postcss autoprefixer
+   
+   # Routing and forms
+   npm install react-router-dom formik yup
+   
+   # Development dependencies
+   npm install -D vite @vitejs/plugin-react
    ```
-3. Create .env file with:
-   ```
-   VITE_API_URL=http://localhost:5000
-   ```
-4. Start the development server:
+
+3. Create .env file:
    ```bash
+   echo "VITE_API_URL=http://localhost:5000" > .env
+   ```
+
+4. Initialize Tailwind CSS:
+   ```bash
+   npx tailwindcss init -p
+   ```
+
+5. Start the development server:
+   ```bash
+   # Development mode
    npm run dev
+
+   # Build for production
+   npm run build
+   
+   # Preview production build
+   npm run preview
    ```
 
 ## Deployment
