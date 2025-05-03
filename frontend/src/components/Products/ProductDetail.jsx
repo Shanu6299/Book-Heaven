@@ -172,7 +172,11 @@ const ProductDetail = ({ productId }) => {
             <div className='mt-20'>
                 <h2 className='text-2xl text-center font-medium mb-4'>
                     You May Like</h2>
-                <ProductGrid products={similarProducts} loading={loading} error={error}/>
+                {similarProducts && similarProducts.length > 0 ? (
+                    <ProductGrid products={similarProducts} loading={loading} error={error}/>
+                ) : (
+                    <p className='text-center text-gray-500'>No similar products found</p>
+                )}
             </div>
         </div>
         )}

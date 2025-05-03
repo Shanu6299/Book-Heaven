@@ -77,7 +77,7 @@ routes.post('/:id/finalize', protect, async (req, res) => {
       return res.status(404).json({message: 'Checkout not found'});
     }
 
-    if (checkout.isPaid && !checkout.isFinalized) {
+    if ((checkout.isPaid || checkout.paymentMethod === 'cod') && !checkout.isFinalized) {
         // Created Final order based on the checkout session
         const finalOrder = await Order.create({
           user: checkout.user,

@@ -1,16 +1,16 @@
 {
     "version": 2,
-    "name":"backend",
     "builds": [
         {
-            "src": "server.js",
-            "use": "@versel/node"
+            "src": "pakage.json",
+            "use": "@versel/static-build",
+            "config": {"distDir": "dist"}
         }
     ],
-    "routes": [
+    "rewrites": [
         {
-            "src": "/(.*)",
-            "dest": "server.js"
+            "source": "/(.*)",
+            "destination": "/"
         }
     ]
 }

@@ -5,6 +5,7 @@ import SearchBar from './SearchBar'
 import CartDrawer from '../Layout/CartDrawer'
 import { IoMdClose } from 'react-icons/io'
 import { useSelector } from 'react-redux'
+import { MdOutlineLocalGroceryStore } from "react-icons/md";
 
 
 const Navbar = () => {
@@ -28,17 +29,19 @@ const Navbar = () => {
     <nav className='container mx-auto py-4 px-6'>
       <div className='flex justify-between items-center'>
         {/* Left Logo */}
-        <div className='flex items-center w-1/4'>
+        <div className='flex items-center w-1/4 gap-2'>
+          {/* Logo */}
+          <MdOutlineLocalGroceryStore className="h-6 w-6 text-gray-700" />
           <Link to="/" className='text-2xl font-medium'>BookStore</Link>
         </div>
 
         {/* Center Navigation Links */}
         <div className='hidden md:flex justify-center space-x-6 w-2/4'>
           <Link to="/best-seller" className='text-gray-700 hover:text-black text-sm font-medium uppercase'>Best Seller</Link>
-          <Link to="/#newarrivals" className='text-gray-700 hover:text-black text-sm font-medium uppercase'>New Arrivals</Link>
+          <Link to="/newarrivals" className='text-gray-700 hover:text-black text-sm font-medium uppercase'>New Arrivals</Link>
           <Link to="/collections/all" className='text-gray-700 hover:text-black text-sm font-medium uppercase'>Categories</Link>
-          <Link to="/aboutus" className='text-gray-700 hover:text-black text-sm font-medium uppercase'>About Us</Link>
-          <Link to="/contact" className='text-gray-700 hover:text-black text-sm font-medium uppercase'>Contact Us</Link>
+          <Link to="/about-us" className='text-gray-700 hover:text-black text-sm font-medium uppercase'>About Us</Link>
+          <Link to="/contact-us" className='text-gray-700 hover:text-black text-sm font-medium uppercase'>Contact Us</Link>
         </div>
 
         {/* Right Icons */}
@@ -75,19 +78,19 @@ const Navbar = () => {
           </button>
         </div>
         <div className='px-4 py-2 space-y-3'>
-          <Link to="/books" className='block py-2 text-gray-700 hover:text-black text-sm font-medium uppercase border-b border-gray-200'>
-            Books
+          <Link to="/best-seller" className='block py-2 text-gray-700 hover:text-black text-sm font-medium uppercase border-b border-gray-200'>
+            Best Seller
           </Link>
-          <Link to="/authors" className='block py-2 text-gray-700 hover:text-black text-sm font-medium uppercase border-b border-gray-200'>
-            Authors
+          <Link to="/newarrivals" className='block py-2 text-gray-700 hover:text-black text-sm font-medium uppercase border-b border-gray-200'>
+            New Arrivals
           </Link>
           <Link to="/collections/all" className='block py-2 text-gray-700 hover:text-black text-sm font-medium uppercase border-b border-gray-200'>
             Categories
           </Link>
-          <Link to="/aboutus" className='block py-2 text-gray-700 hover:text-black text-sm font-medium uppercase border-b border-gray-200'>
+          <Link to="/about-us" className='block py-2 text-gray-700 hover:text-black text-sm font-medium uppercase border-b border-gray-200'>
             About Us
           </Link>
-          <Link to="#" className='block py-2 text-gray-700 hover:text-black text-sm font-medium uppercase border-b border-gray-200'>
+          <Link to="/contact-us" className='block py-2 text-gray-700 hover:text-black text-sm font-medium uppercase border-b border-gray-200'>
             Contact Us
           </Link>          
         </div>

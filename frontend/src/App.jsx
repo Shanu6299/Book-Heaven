@@ -20,10 +20,14 @@ import ProductManagement from './components/admin/ProductManagement'
 import EditProductPage from './components/admin/EditProductPage'
 import OrderManagement from './components/admin/OrderManagement'
 import AboutUs from './pages/AboutUs'
+import Blog from './pages/Blog'
 
 import {Provider} from 'react-redux';
 import store from './redux/store';
 import ProtectedRoute from './components/common/ProtectedRoute'
+import Contact from './pages/Contact'
+import BestSeller from './pages/BestSeller'
+import NewArrivals from './pages/NewArrivals'
 
 const App = () => {
   return (
@@ -44,6 +48,11 @@ const App = () => {
         <Route path='order-confirmation' element={<OrderConfirmationPage/>} />
         <Route path='order/:id' element={<OrdersDetailPage/>} />
         <Route path='my-orders' element={<MyOrdersPages/>} />
+        <Route path='about-us' element={<AboutUs/>} />
+        <Route path='blog' element={<Blog/>} />
+        <Route path='contact-us' element={<Contact/>} />
+        <Route path='best-seller' element={<BestSeller/>} />
+        <Route path='newarrivals' element={<NewArrivals/>} />
         <Route path='/admin' element={
           <ProtectedRoute role="admin">
           <AdminLayout/>
@@ -53,7 +62,7 @@ const App = () => {
         <Route path='products' element={<ProductManagement/>}/>
         <Route path='products/:id/edit' element={<EditProductPage/>}/>
         <Route path='orders' element={<OrderManagement/>}/>
-        <Route path='aboutus' element={<AboutUs/>} />
+        
         
         </Route>
         

@@ -11,106 +11,6 @@ import FeaturedSection from '../components/Products/FeaturedSection';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProductsByFilters, fetchProductDetails } from '../redux/slices/productsSlice';
 
-// const placeholderProducts = [
-//   {
-//     _id: 1,
-//     title: 'The Alchemist',
-//     author: 'Paulo Coelho',
-//     price: 29.99,
-//     images: [
-//       {
-//         url: "https://picsum.photos/500/500?random=1",
-//         alt: "The Alchemist Book Cover"
-//       }
-//     ]
-//   },
-//   {
-//     _id: 2,
-//     title: 'The Alchemist',
-//     author: 'Paulo Coelho',
-//     price: 29.99,
-//     images: [
-//       {
-//         url: "https://picsum.photos/500/500?random=2",
-//         alt: "The Alchemist Book Cover"
-//       }
-//     ]
-//   },
-//   {
-//     _id: 3,
-//     title: 'The Alchemist',
-//     author: 'Paulo Coelho',
-//     price: 29.99,
-//     images: [
-//       {
-//         url: "https://picsum.photos/500/500?random=3",
-//         alt: "The Alchemist Book Cover"
-//       }
-//     ]
-//   },
-//   {
-//     _id: 4,
-//     title: 'The Alchemist',
-//     author: 'Paulo Coelho',
-//     price: 29.99,
-//     images: [
-//       {
-//         url: "https://picsum.photos/500/500?random=4",
-//         alt: "The Alchemist Book Cover"
-//       }
-//     ]
-//   },
-//   {
-//     _id: 5,
-//     title: 'The Alchemist',
-//     author: 'Paulo Coelho',
-//     price: 29.99,
-//     images: [
-//       {
-//         url: "https://picsum.photos/500/500?random=5",
-//         alt: "The Alchemist Book Cover"
-//       }
-//     ]
-//   },
-//   {
-//     _id: 6,
-//     title: 'The Alchemist',
-//     author: 'Paulo Coelho',
-//     price: 29.99,
-//     images: [
-//       {
-//         url: "https://picsum.photos/500/500?random=6",
-//         alt: "The Alchemist Book Cover"
-//       }
-//     ]
-//   },
-//   {
-//     _id: 7,
-//     title: 'The Alchemist',
-//     author: 'Paulo Coelho',
-//     price: 29.99,
-//     images: [
-//       {
-//         url: "https://picsum.photos/500/500?random=7",
-//         alt: "The Alchemist Book Cover"
-//       }
-//     ]
-//   },
-//   {
-//     _id: 8,
-//     title: 'The Alchemist',
-//     author: 'Paulo Coelho',
-//     price: 29.99,
-//     images: [
-//       {
-//         url: "https://picsum.photos/500/500?random=8",
-//         alt: "The Alchemist Book Cover"
-//       }
-//     ]
-//   }
-// ]
-
-
 const Home = () => {
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((state) => state.products);
@@ -118,9 +18,8 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(fetchProductsByFilters({
-      category: "Best Seller",
-      sort: "-rating",
-      limit: 8,
+      sortBy: "rating",
+      limit: 8
     }));
 
     // Fetch best seller products
@@ -140,7 +39,7 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className=''>
       <Hero/>
       <BookCollectionSection/>
       <Newarrivals/>

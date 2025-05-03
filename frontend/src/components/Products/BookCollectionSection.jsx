@@ -6,7 +6,7 @@ import Drama_book from '../../assets/Drama-book.jpg'
 
 const BookCollectionSection = () => {
   return (
-    <section className='py-16 px-4 lg:px-0 bg-gray-50'>
+    <section className='py-16 px-12 lg:px-0 bg-gray-50'>
       <h1 className='text-3xl md:text-4xl font-bold text-center mb-8 underline text-primary-red'>Book Collections</h1>
       <div className='container mx-auto flex flex-col md:flex-row gap-8'>
         <div className='relative flex-1'>

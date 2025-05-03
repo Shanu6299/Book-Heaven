@@ -1,6 +1,25 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const AboutUs = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.5, staggerChildren: 0.3 } }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } }
+  };
+
+  const achievements = [
+    { number: '50K+', text: 'Books Delivered' },
+    { number: '1000+', text: 'Active Members' },
+    { number: '100+', text: 'Literary Events' },
+    { number: '20+', text: 'Industry Awards' }
+  ];
+
   const teamMembers = [
     {
       name: 'John Doe',
@@ -36,8 +55,14 @@ const AboutUs = () => {
   ];
 
   return (
-    <div className="py-16 px-4 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <motion.div 
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className="py-16 px-4 lg:px-8"
+    >
+      <motion.div variants={itemVariants} className="max-w-7xl mx-auto">
+        
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Our Story</h1>
@@ -46,18 +71,32 @@ const AboutUs = () => {
             Our journey began with a simple idea: to create a space where book lovers could discover,
             explore, and share their love for reading.
           </p>
+          <Link to="/blog" className="inline-block mt-6 bg-primary-red text-white py-2 px-6 rounded-md hover:bg-red-600 transition duration-300">
+            Read Our Blog
+          </Link>
         </div>
+
+        {/* Achievements Section */}
+        <motion.div variants={itemVariants} className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+          {achievements.map((achievement, index) => (
+            <div key={index} className="text-center p-6 bg-white rounded-lg shadow-lg">
+              <h3 className="text-3xl font-bold text-primary-red mb-2">{achievement.number}</h3>
+              <p className="text-gray-600">{achievement.text}</p>
+            </div>
+          ))}
+        </motion.div>
 
         {/* Mission & Values */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
-          <div className="bg-white p-8 rounded-lg shadow-lg">
+          <motion.div variants={itemVariants} className="bg-white p-8 rounded-lg shadow-lg">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h2>
             <p className="text-gray-600">
               To inspire and nurture a love for reading by providing carefully curated books
               and creating a community where readers can connect, discover, and grow.
             </p>
-          </div>
-          <div className="bg-white p-8 rounded-lg shadow-lg">
+          </motion.div>
+          
+          <motion.div variants={itemVariants} className="bg-white p-8 rounded-lg shadow-lg">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Values</h2>
             <ul className="text-gray-600 space-y-2">
               <li>• Quality over quantity in our book selection</li>
@@ -65,7 +104,7 @@ const AboutUs = () => {
               <li>• Community engagement and literary events</li>
               <li>• Supporting emerging authors and diverse voices</li>
             </ul>
-          </div>
+          </motion.div>
         </div>
 
         {/* Team Section */}
@@ -73,7 +112,12 @@ const AboutUs = () => {
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">Meet Our Team</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-lg text-center">
+              <motion.div 
+                key={index}
+                variants={itemVariants}
+                whileHover={{ y: -5, scale: 1.02 }}
+                className="bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-all duration-300"
+              >
                 <img
                   src={member.image}
                   alt={member.name}
@@ -82,23 +126,28 @@ const AboutUs = () => {
                 <h3 className="text-xl font-semibold text-gray-900">{member.name}</h3>
                 <p className="text-primary-red font-medium mb-2">{member.role}</p>
                 <p className="text-gray-600">{member.bio}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
 
         {/* Testimonials */}
-        <div className="bg-gray-50 p-8 rounded-lg">
+        <div className="bg-gray-50 p-8 rounded-lg mb-16">
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">What Our Customers Say</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-lg">
+              <motion.div 
+                key={index}
+                variants={itemVariants}
+                whileHover={{ scale: 1.02 }}
+                className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+              >
                 <p className="text-gray-600 italic mb-4">"{testimonial.text}"</p>
                 <div>
                   <p className="font-semibold text-gray-900">{testimonial.author}</p>
                   <p className="text-gray-500">{testimonial.role}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -109,12 +158,14 @@ const AboutUs = () => {
           <p className="text-gray-600 mb-6">
             Be part of our growing community of book lovers. Visit our store or shop online today.
           </p>
-          <button className="bg-primary-red text-white py-2 px-6 rounded-md hover:bg-red-600 transition duration-300">
-            Visit Store
-          </button>
+          <div className="flex justify-center gap-4">
+            <Link to="/collections/all" className="bg-primary-red text-white py-2 px-6 rounded-md hover:bg-red-600 transition duration-300">
+              Visit Store
+            </Link>
+          </div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

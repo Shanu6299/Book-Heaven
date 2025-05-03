@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import { fetchProductsByFilters } from '../../redux/slices/productsSlice'
 
 const FilterSidebar = ({ onClose }) => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -30,6 +31,7 @@ const FilterSidebar = ({ onClose }) => {
       brand: params.brand ? params.brand.split(',') : [],
       minPrice: Number(params.minPrice) || 0,
       maxPrice: Number(params.maxPrice) || 1000,
+      productType: params.productType || ''
     });
     setPriceRange([Number(params.minPrice) || 0, Number(params.maxPrice) || 1000]);
   }, [searchParams]);
@@ -43,6 +45,8 @@ const FilterSidebar = ({ onClose }) => {
       if (value) {
         if (Array.isArray(value)) {
           if (value.length > 0) params[key] = value.join(',');
+        } else if (key === 'rating') {
+          params[key] = value.split(' ')[0];
         } else {
           params[key] = value.toString();
         }
@@ -107,6 +111,7 @@ const FilterSidebar = ({ onClose }) => {
               }
             });
             setSearchParams(params);
+            dispatch(fetchProductsByFilters(params));
             if (onClose) onClose();
           }}
           className="px-4 py-2 bg-primary-red text-white rounded hover:bg-red-600 transition-colors"

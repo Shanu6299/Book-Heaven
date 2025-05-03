@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import Checkout from '../components/cart/Checkout';
 import { clearCart } from '../redux/slices/cartSlice';
 
 const OrderConfirmationPage = () => {
@@ -20,6 +19,8 @@ const OrderConfirmationPage = () => {
     }
   }, [dispatch,checkout, navigate ]);
 
+
+  // Calculate estimated delivery date
   const calculateEstimatedDelivery = (createdAt) => {
     const orderDate = new Date(createdAt);
     orderDate.setDate(orderDate.getDate() + 10); // add 10 days
@@ -44,7 +45,7 @@ const OrderConfirmationPage = () => {
           <div className='mb-8'>
             <h3 className='text-lg font-semibold mb-2'>Shipping Address</h3>
             <div className='text-gray-600'>
-              <p>{checkout.shippingAddress.fullName}</p>
+              <p>{`${checkout.shippingAddress.firstName} ${checkout.shippingAddress.lastName}`}</p>
               <p>{checkout.shippingAddress.address}</p>
               <p>{checkout.shippingAddress.city}, {checkout.shippingAddress.state} {checkout.shippingAddress.postalCode}</p>
             </div>
