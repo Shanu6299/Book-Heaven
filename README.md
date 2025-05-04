@@ -3,31 +3,6 @@
 ## Project Overview
 A full-stack e-commerce book store application built using the MERN (MongoDB, Express.js, React.js, Node.js) stack with Redux for state management. The application features user authentication, book browsing, shopping cart functionality, order management, and an admin dashboard.
 
-## Project Structure
-
-### Frontend Structure (`/frontend`)
-```
-frontend/
-├── src/
-│   ├── assets/         # Static assets like images
-│   ├── components/     # Reusable React components
-│   ├── context/       # React context providers
-│   ├── pages/         # Page components
-│   ├── redux/         # Redux store and slices
-│   └── App.jsx        # Main application component
-```
-
-### Backend Structure (`/backend`)
-```
-backend/
-├── config/           # Database configuration
-├── data/            # Seed data and static content
-├── middleware/      # Custom middleware (auth, etc.)
-├── models/          # MongoDB schemas
-├── routes/          # API route handlers
-└── server.js        # Express application entry point
-```
-
 ## Data Flow
 
 ### Authentication Flow
@@ -47,20 +22,6 @@ backend/
 2. Product management through adminProducts slice
 3. Order management via adminOrders slice
 4. User management capabilities
-
-## Redux Store Structure
-```javascript
-store: {
-  auth: { user, token, loading, error },
-  products: { items, loading, error },
-  cart: { items, total, loading },
-  checkout: { details, status },
-  orders: { list, current, status },
-  admin: { stats, permissions },
-  adminProducts: { list, operations },
-  adminOrders: { orders, status }
-}
-```
 
 ## API Endpoints
 
