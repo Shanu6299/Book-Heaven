@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import MyOrdersPages from './MyordersPages'
+import MyOrdersPages from './MyOrdersPages'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { logoutUser } from '../redux/slices/authSlice'
