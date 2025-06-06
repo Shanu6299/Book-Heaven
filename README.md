@@ -3,6 +3,8 @@
 ## Project Overview
 A full-stack e-commerce book store application built using the MERN (MongoDB, Express.js, React.js, Node.js) stack with Redux for state management. The application features user authentication, book browsing, shopping cart functionality, order management, and an admin dashboard.
 
+<img src="frontend\src\assets\Home.png" alt="Website Preview" width="500">
+
 ## Data Flow
 
 ### Authentication Flow
