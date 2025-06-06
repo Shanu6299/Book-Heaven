@@ -2,15 +2,15 @@
     "version": 2,
     "builds": [
         {
-            "src": "pakage.json",
-            "use": "@vercel/static-build",
+            "src": "package.json",
+            "use": "@vercel/node",
             "config": {"distDir": "dist"}
         }
     ],
     "rewrites": [
         {
-            "source": "/(.*)",
-            "destination": "/"
+            "source": "/(.*)", "destination": "/" 
+            
         }
     ]
 }

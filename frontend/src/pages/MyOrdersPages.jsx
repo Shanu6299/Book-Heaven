@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { fetchUserOrders } from '../redux/slices/orderSlice';
@@ -59,7 +59,7 @@ const MyOrdersPages = () => {
                   <td className='px-2 py-2 sm:py-4 sm:px-4 font-medium text-gray-900 whitespace-nowrap'>{order._id}</td>
                   <td className='px-2 py-2 sm:py-4 sm:px-4'>{new Date(order.createdAt).toLocaleString()}{" "}
                                                             {new Date(order.createdAt).toLocaleTimeString()}</td>
-                  <td className='px-2 py-2 sm:py-4 sm:px-4'>{order.shippingAddress?` (${order.shippingAddress.city},${order.shippingAddress.State})`:'N/A'}</td>
+                  <td className='px-2 py-2 sm:py-4 sm:px-4'>{order.shippingAddress && order.shippingAddress.city && order.shippingAddress.state ? ` (${order.shippingAddress.city},${order.shippingAddress.state})` : 'N/A'}</td>
                   <td className='px-2 py-2 sm:py-4 sm:px-4'>{order.orderItems.length}</td>
                   <td className='px-2 py-2 sm:py-4 sm:px-4'>${order.totalPrice}</td>
                   <td className='px-2 py-2 sm:py-4 sm:px-4'>
