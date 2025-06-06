@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Hero from '../components/Layout/Hero'
 import BookCollectionSection from '../components/Products/BookCollectionSection'
-import Newarrivals from '../components/Products/Newarrivals';
+import Newarrivals from "../components/Products/Newarrivals";
 import ProductDetail from '../components/Products/ProductDetail';
 import ProductGrid from '../components/Products/ProductGrid';
 import FeaturedCollection from '../components/Products/FeaturedCollection';
